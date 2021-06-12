@@ -39,17 +39,20 @@ int main()
 	}
 
 	/*
-	* Spiral elementwise traversal
+	* Counter clockwise spiral elementwise traversal
 	*/
+	int idxCenter = matrixDimension % 2 ? (matrixDimension / 2 - 1) : (matrixDimension / 2);
 
-	int idxCenter = matrixDimension / 2;
 	// Diagonal steps
-	for (size_t currentCycle = 0; currentCycle < matrixDimension; ++currentCycle) {
+	for (size_t diagonalCycle = 1; diagonalCycle < idxCenter; ++diagonalCycle) {
 		// Down steps
-		for (size_t i = idxCenter; i < currentCycle and i < matrixDimension; ++i) {
-			for (size_t j = 0; j < ; j++) {
-				
+		for (size_t i = idxCenter; i < 2 * diagonalCycle; ++i) {
+			for (size_t j = 0; j < diagonalCycle; j++) {
+				;
 			}
 		}
+		// Right steps
+		// Up steps
+		// Left steps
 	}
 }
