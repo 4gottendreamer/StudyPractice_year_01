@@ -147,7 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Methods.cpp" />
     <ClCompile Include="Task_1a.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Methods.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
