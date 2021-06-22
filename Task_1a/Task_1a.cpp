@@ -1,8 +1,8 @@
 ﻿// Task_1a.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-// ������� 5
+// Вариант 5
 /*
-������ 1.
+Задача 1.
 а) Пусть дана матрица n×n (n = 1,..., 15).
 Выяснить, имеются ли в матрице ненулевые элементы,
 и если имеются, то указать индексы всех ненулевых элементов.
@@ -12,8 +12,7 @@
 #include <vector>
 #include "Methods.h"
 
-int main()
-{
+int main() {
 	std::vector<std::pair<int, int>> zeroIndices;
 	int matrixDimension;
 	std::cout << "Input matrix dimension: ";
@@ -31,10 +30,11 @@ int main()
 	for (size_t i = 0; i < matrixDimension; i++) {
 		for (size_t j = 0; j < matrixDimension; j++) {
 			if (A[i][j] == 0) {
-				zeroIndices.push_back(std::pair(i,j));
+				zeroIndices.push_back(std::pair(i, j));
 			}
 		}
 	}
+
 	if (zeroIndices.size()) {
 		std::cout << "Indices of zero-value elements:" << std::endl;
 		std::cout << "Row\tColumn" << std::endl;
@@ -42,9 +42,7 @@ int main()
 			std::cout << idxPair.first << '\t' << idxPair.second << std::endl;
 		}
 	}
-	else {
-		std::cout << "There are no zero-value elements in the matrix." << std::endl;
-	}
+
 	std::cout << "Press Enter" << std::endl;
 	std::cin.get();
 	std::cin.get();
