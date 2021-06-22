@@ -1,24 +1,20 @@
-// Task_1a.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// Task_1a.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-// Âàðèàíò 5
+// Ð’Ð°Ñ€Ð¸Ð°Ð½Ñ‚ 5
 /*
-Çàäà÷à 1.
-à) Íà÷èíàÿ ñ öåíòðà, îáîéòè ïî ñïèðàëè âñå ýëåìåíòû êâàäðàòíîé ìàòðèöû n * n,
-ðàñïîëàãàÿ èõ â ïîðÿäêå îáõîäà ïî è ïðîòèâ ÷àñîâîé ñòðåëêè.
-*/
-
-/*
-*	1.	Implement class Matrix
-*		a. operator>>()
-*		b. operator<<()
+Ð—Ð°Ð´Ð°Ñ‡Ð° 1.
+Ð°) ÐŸÑƒÑÑ‚ÑŒ Ð´Ð°Ð½Ð° Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð° nÃ—n (n = 1,..., 15).
+Ð’Ñ‹ÑÑÐ½Ð¸Ñ‚ÑŒ, Ð¸Ð¼ÐµÑŽÑ‚ÑÑ Ð»Ð¸ Ð² Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ðµ Ð½ÐµÐ½ÑƒÐ»ÐµÐ²Ñ‹Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹,
+Ð¸ ÐµÑÐ»Ð¸ Ð¸Ð¼ÐµÑŽÑ‚ÑÑ, Ñ‚Ð¾ ÑƒÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð¸Ð½Ð´ÐµÐºÑÑ‹ Ð²ÑÐµÑ… Ð½ÐµÐ½ÑƒÐ»ÐµÐ²Ñ‹Ñ… ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð².
 */
 
 #include <iostream>
+#include <vector>
 #include "Methods.h"
 
 int main()
 {
-	std::cout << "Hello World!\n";
+	std::vector<std::pair<int, int>> zeroIndices;
 	int matrixDimension;
 	std::cout << "Input matrix dimension: ";
 	std::cin >> matrixDimension;
@@ -26,33 +22,30 @@ int main()
 	for (size_t i = 0; i < matrixDimension; i++) {
 		A[i] = new int[matrixDimension];
 		for (size_t j = 0; j < matrixDimension; j++) {
-			A[i][j] = rand() % 1000;
+			A[i][j] = rand() % 10;
 		}
 	}
-	printMatrix(A, matrixDimension, matrixDimension);
+
+	printMatrixWithIndices(A, matrixDimension, matrixDimension);
 
 	for (size_t i = 0; i < matrixDimension; i++) {
-		A[i] = new int[matrixDimension];
 		for (size_t j = 0; j < matrixDimension; j++) {
-			A[i][j] = rand() % 100;
-		}
-	}
-
-	/*
-	* Counter clockwise spiral elementwise traversal
-	*/
-	int idxCenter = matrixDimension % 2 ? (matrixDimension / 2 - 1) : (matrixDimension / 2);
-
-	// Diagonal steps
-	for (size_t diagonalCycle = 1; diagonalCycle < idxCenter; ++diagonalCycle) {
-		// Down steps
-		for (size_t i = idxCenter; i < 2 * diagonalCycle; ++i) {
-			for (size_t j = 0; j < diagonalCycle; j++) {
-				;
+			if (A[i][j] == 0) {
+				zeroIndices.push_back(std::pair(i,j));
 			}
 		}
-		// Right steps
-		// Up steps
-		// Left steps
 	}
+	if (zeroIndices.size()) {
+		std::cout << "Indices of zero-value elements:" << std::endl;
+		std::cout << "Row\tColumn" << std::endl;
+		for (auto idxPair : zeroIndices) {
+			std::cout << idxPair.first << '\t' << idxPair.second << std::endl;
+		}
+	}
+	else {
+		std::cout << "There are no zero-value elements in the matrix." << std::endl;
+	}
+	std::cout << "Press Enter" << std::endl;
+	std::cin.get();
+	std::cin.get();
 }
